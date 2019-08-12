@@ -24,55 +24,26 @@ function sendMessageToContentScript(message, callback) {
     });
 }
 
-chrome.runtime.onMessageExternal.addListener(function (request, sender, sendResponse) {
-    chrome.tabs.create({url: request.msg.url}, function (tab) {
-        // 给新建的tab绑定一个id，便于后面更新页面时发送消息
-        request.msg.id = tab.id;
-        window.data.push(request.msg);
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    sendResponse('OK!');
+    let url = 'http://test.mvcb.qilie.biz';
+    chrome.tabs.create({url: url}, function (tab) {
+        window.data.push(request);
     });
 });
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    // 当平台是天猫时,选择sku属性时，url会改变，就会无限触发update方法，因此对根url进行判断，是否属于同一页面，如果是,则不再触发此方法
-    let url = tab.url;
-    let prop_flag = url.indexOf('sku_properties');
-    let prop_skuId = url.indexOf('skuId');
-    let isOriginPage = false;
-    if (prop_flag > 0 || prop_skuId > 0) {
-        isOriginPage = true
-    }
-    // 当新开标签页时，预加载蒙层
-    if (changeInfo.status == 'loading') {
-        chrome.tabs.query({}, function (tabs) {
-            tabs.forEach(function (item, index, arr) {
-                if (item.id === tabId && !isOriginPage) {
-                    chrome.tabs.sendMessage(tabId, {cmd: 'pre', value: 'showMask'});
-                }
-            });
-        })
-    }
     // 当页面加载完时，才能操作dom
     if (changeInfo.status == 'complete') {
         chrome.tabs.query({}, function (tabs) {
-            tabs.forEach(function (item, index, arr) {
-                if (item.id === tabId && !isOriginPage) {
-                    chrome.tabs.sendMessage(tabId, {cmd: 'sku', value: getCurTabMsg(window.data, tabId)});
-                    // 给1688结算页发送订单所有详情信息
-                    chrome.tabs.sendMessage(tabId, {cmd: 'all', value: window.data});
+            tabs.forEach(function (item) {
+                if (item.id === tabId) {
+                    chrome.tabs.sendMessage(tabId, {cmd: 'jump', value: window.data && window.data[0]});
                 }
             });
         })
     }
 });
-
-// 根据tabId获取全局对象对应tab的消息
-function getCurTabMsg(data, id) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].id === id) {
-            return data[i]
-        }
-    }
-}
 
 // 清空data
 function clearData() {

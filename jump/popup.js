@@ -4,16 +4,12 @@ $(function () {
     let pageUrl = '';
     bg && bg.getCurrentTabUrl(url => {
         pageUrl = url
-    })
+    });
 
     $("#btn").click(function () {
-        // 在非1688页面点击插件按钮不会导致插件报错
-        if (bg) {
-            bg.sendMessageToContentScript({cmd: 'jump', value: pageUrl}, res => {
-                console.log(res);
-            });
-            // 每次重新批量下单时，清空插件的全局数据
-            bg.clearData()
-        }
+        chrome.runtime.sendMessage({url: pageUrl}, function (response) {
+            console.log(response);
+        });
+        bg && bg.clearData()
     });
 });
