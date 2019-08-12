@@ -26,7 +26,8 @@ function sendMessageToContentScript(message, callback) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     sendResponse('OK!');
-    let url = 'http://test.mvcb.qilie.biz';
+    // let url = 'http://test.mvcb.qilie.biz';
+    let url = 'http://localhost:8080';
     chrome.tabs.create({url: url}, function (tab) {
         window.data.push(request);
     });
