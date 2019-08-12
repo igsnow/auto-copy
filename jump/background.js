@@ -38,7 +38,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         chrome.tabs.query({}, function (tabs) {
             tabs.forEach(function (item) {
                 if (item.id === tabId) {
-                    chrome.tabs.sendMessage(tabId, {cmd: 'jump', value: window.data && window.data[0]});
+                    chrome.tabs.sendMessage(tabId, {
+                        cmd: 'jump',
+                        value: window.data && window.data[0] && window.data[0].url
+                    });
                 }
             });
         })
