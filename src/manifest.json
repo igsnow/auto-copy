@@ -43,7 +43,8 @@
       "*://localhost/*",
       "*://test.mvcb.qilie.biz/*",
       "*://hk.vmall.vcanbuy.com/*",
-      "*://vmall.vcanbuy.com/*"
+      "*://vmall.vcanbuy.com/*",
+      "*://detail.tmall.com/*"
     ]
   }
 }
