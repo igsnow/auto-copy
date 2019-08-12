@@ -8,6 +8,13 @@ function getCurrentTabId(callback) {
     });
 }
 
+// 获取当前选项卡url
+function getCurrentTabUrl(callback) {
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        if (callback) callback(tabs.length ? tabs[0].url : null);
+    });
+}
+
 // 给content.js发送消息
 function sendMessageToContentScript(message, callback) {
     getCurrentTabId((tabId) => {

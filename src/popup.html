@@ -8,27 +8,20 @@
     <style>
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 150px;
+            width: 300px;
             height: 100px;
             background: #ff8634;
-        }
-
-        #btn, #tBtn {
-            width: 60px;
-            height: 40px;
-            text-align: center;
-            color: #ff8634;
-            font-size: 14px;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <button id="btn">1688</button>
-    <button id="tBtn">淘宝</button>
+    <input type="text" placeholder="尺码">
+    <input type="text" placeholder="数量">
+    <button id="btn">确定</button>
 </div>
 </body>
 </html>
