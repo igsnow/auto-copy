@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "VcanbuyAutoOrder",
+  "name": "AutoCopy",
   "version": "1.0.0",
   "author": "zhangzhiyong@Vcanbuy",
   "description": "支持1688、淘宝、天猫",
@@ -41,10 +41,9 @@
   "externally_connectable": {
     "matches": [
       "*://localhost/*",
-      "*://test.mvcb.qilie.biz/*",
-      "*://hk.vmall.vcanbuy.com/*",
-      "*://vmall.vcanbuy.com/*",
-      "*://detail.tmall.com/*"
+      "*://test.wvcb.qilie.biz/*",
+      "*://hk.vwork.vcanbuy.com/*",
+      "*://vwork.vcanbuy.com/*"
     ]
   }
 }
