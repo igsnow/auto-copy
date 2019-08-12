@@ -30,11 +30,6 @@ chrome.runtime.onMessageExternal.addListener(function (request, sender, sendResp
         request.msg.id = tab.id;
         window.data.push(request.msg);
     });
-
-    // 可以针对sender做一些白名单检查
-    if (request.type == 'MsgFromPage') {
-        sendResponse({type: 'MsgFromChrome', msg: 'Hello, I am chrome res~'});
-    }
 });
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {

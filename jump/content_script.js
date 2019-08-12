@@ -10,14 +10,16 @@ let hasFirstSku = false;     // 是否有第一个sku标识
 
 // 共用页面的DOM，但是和页面的js是隔离的
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+
     if (request.cmd == 'jump') {
-        alert(request.value);
-        $('.fxkBtn').each(function (index, element) {
-            if ($(this).css("display") != "none") {
-                $(this).click()
-            }
+        console.log(request.value);
+        chrome.runtime.sendMessage('edommbnemaoomooggjlfklpjggfmmpep', {
+            type: 'mall',
+            msg: request.value
+        }, function (response) {
+            console.log(response);
         });
-        sendResponse('1688批量点击消息已收到！');
+        sendResponse('Vcanbuy跳转消息已收到！');
     }
 
     if (request.cmd == 'batch') {
