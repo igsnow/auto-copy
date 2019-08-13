@@ -35,7 +35,7 @@
   ],
   "browser_action": {
     "default_icon": "sicon.png",
-    "default_title": "Vcanbuy自动拷贝链接",
+    "default_title": "Vcanbuy自动拷贝",
     "default_popup": "popup.html"
   }
 }
