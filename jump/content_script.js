@@ -20,7 +20,6 @@ function handleCopy(val) {
         ipt[0].dispatchEvent(new Event('input'));
     }
     if (btn && btn[0]) {
-        console.log('click');
         btn[0].click();
     }
 }

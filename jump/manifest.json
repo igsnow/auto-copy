@@ -35,12 +35,7 @@
   ],
   "browser_action": {
     "default_icon": "sicon.png",
-    "default_title": "Vcanbuy自动下单",
+    "default_title": "Vcanbuy自动拷贝链接",
     "default_popup": "popup.html"
-  },
-  "externally_connectable": {
-    "matches": [
-      "*://detail.tmall.com/*"
-    ]
   }
 }
