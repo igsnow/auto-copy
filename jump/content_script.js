@@ -1,4 +1,3 @@
-// 共用页面的DOM，但是和页面的js是隔离的
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (location.host == 'localhost:8080' && location.hash == '#/') {
         if (request.cmd == 'jump') {
@@ -17,11 +16,12 @@ function handleCopy(val) {
     let btn = $('.top-banner .btn');
     if (ipt && ipt[0]) {
         ipt[0].value = val;
+        // 避免直接赋值无法触发v-model的bug
         ipt[0].dispatchEvent(new Event('input'));
     }
     if (btn && btn[0]) {
         console.log('click');
-        btn[0].click()
+        btn[0].click();
     }
 }
 
