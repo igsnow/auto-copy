@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "AutoCopy",
   "version": "1.0.0",
-  "author": "zhangzhiyong@Vcanbuy",
+  "author": "zhangzhiyong",
   "description": "支持1688、淘宝、天猫",
   "icons": {
     "16": "sicon.png",
