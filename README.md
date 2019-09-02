@@ -1,2 +1,2 @@
-# vcanbuy-user
+# auto-copy
 a Google plugin for users
