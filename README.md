@@ -1,2 +1,2 @@
 # vcanbuy-user
-a Google plugin for users of Vcanbuy
+a Google plugin for users
